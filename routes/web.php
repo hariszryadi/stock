@@ -20,7 +20,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', 'App\Http\Controllers\HomeController@index')->name('home');
 
 Route::resource('basic_material','\App\Http\Controllers\BasicMaterialController');
 Route::resource('finished_material','\App\Http\Controllers\FinishedMaterialController');

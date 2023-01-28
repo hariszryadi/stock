@@ -133,10 +133,10 @@
                                             <div class="py-3">
                                                 <div class="mb-4">
                                                     <input type="text"
-                                                        class="form-control form-control-alt form-control-lg @error('email') is-invalid @enderror"
-                                                        id="email" name="email" value="{{ old('email') }}"
+                                                        class="form-control form-control-alt form-control-lg @error('username') is-invalid @enderror"
+                                                        id="username" name="username" value="{{ old('username') }}"
                                                         placeholder="Username">
-                                                    @error('email')
+                                                    @error('username')
                                                         <div class="invalid-feedback animated fadeIn">{{ $message }}</div>
                                                     @enderror
                                                 </div>
