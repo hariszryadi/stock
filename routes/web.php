@@ -25,3 +25,4 @@ Route::resource('basic_material','\App\Http\Controllers\BasicMaterialController'
 Route::resource('finished_material','\App\Http\Controllers\FinishedMaterialController');
 Route::resource('basic_material_in','\App\Http\Controllers\BasicMaterialInController');
 Route::resource('finished_material_in','\App\Http\Controllers\FinishedMaterialInController');
+Route::resource('basic_material_out','\App\Http\Controllers\BasicMaterialOutController');

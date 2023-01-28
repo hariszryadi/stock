@@ -46,7 +46,7 @@
                 <li class="nav-main-item {{ request()->is('basic_material') || request()->is('basic_material/*') || request()->is('finished_material') || request()->is('finished_material/*') ? 'open' : '' }}">
                     <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true"
                         aria-expanded="{{ request()->is('basic_material') || request()->is('basic_material/*') || request()->is('finished_material') || request()->is('finished_material/*') ? 'true' : 'false' }}" href="#">
-                        <i class="nav-main-link-icon si si-grid"></i>
+                        <i class="nav-main-link-icon fa fa-database"></i>
                         <span class="nav-main-link-name">Stok</span>
                     </a>
                     <ul class="nav-main-submenu">
@@ -65,7 +65,7 @@
                 <li class="nav-main-item {{ request()->is('basic_material_in') || request()->is('basic_material_in/*') || request()->is('finished_material_in') || request()->is('finished_material_in/*') ? 'open' : '' }}">
                     <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true"
                         aria-expanded="{{ request()->is('basic_material_in') || request()->is('basic_material_in/*') || request()->is('finished_material_in') || request()->is('finished_material_in/*') ? 'true' : 'false' }}" href="#">
-                        <i class="nav-main-link-icon si si-layers"></i>
+                        <i class="nav-main-link-icon fa fa-sign-in-alt"></i>
                         <span class="nav-main-link-name">Barang Masuk</span>
                     </a>
                     <ul class="nav-main-submenu">
@@ -81,25 +81,25 @@
                         </li>
                     </ul>
                 </li>
-                {{-- <li class="nav-main-item {{ request()->is('transaction_in') || request()->is('transaction_in/*') ? 'open' : '' }}">
+                <li class="nav-main-item {{ request()->is('basic_material_out') || request()->is('basic_material_out/*') ? 'open' : '' }}">
                     <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true"
-                        aria-expanded="{{ request()->is('transaction_in') || request()->is('transaction_in/*') ? 'true' : 'false' }}" href="#">
-                        <i class="nav-main-link-icon si si-note"></i>
-                        <span class="nav-main-link-name">Transaksi</span>
+                        aria-expanded="{{ request()->is('basic_material_out') || request()->is('basic_material_out/*') ? 'true' : 'false' }}" href="#">
+                        <i class="nav-main-link-icon fa fa-sign-out-alt"></i>
+                        <span class="nav-main-link-name">Barang Keluar</span>
                     </a>
                     <ul class="nav-main-submenu">
                         <li class="nav-main-item">
-                            <a class="nav-main-link {{ request()->is('transaction_in') || request()->is('transaction_in/*') ? 'active' : '' }}" href="{{ route('transaction_in.index') }}">
-                                <span class="nav-main-link-name">Barang Masuk</span>
+                            <a class="nav-main-link {{ request()->is('basic_material_out') || request()->is('basic_material_out/*') ? 'active' : '' }}" href="{{ route('basic_material_out.index') }}">
+                                <span class="nav-main-link-name">Bahan Dasar</span>
                             </a>
                         </li>
                         <li class="nav-main-item">
                             <a class="nav-main-link" href="#">
-                                <span class="nav-main-link-name">Barang Keluar</span>
+                                <span class="nav-main-link-name">Bahan Jadi</span>
                             </a>
                         </li>
                     </ul>
-                </li> --}}
+                </li>
                 {{-- <li class="nav-main-item">
                     <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true"
                         aria-expanded="false" href="#">
