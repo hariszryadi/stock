@@ -27,6 +27,8 @@
     <link rel="stylesheet" href="{{ asset('assets/js/plugins/datatables-bs5/css/dataTables.bootstrap5.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/js/plugins/datatables-buttons-bs5/css/buttons.bootstrap5.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/js/plugins/datatables-responsive-bs5/css/responsive.bootstrap5.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/js/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/js/plugins/flatpickr/flatpickr.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/js/plugins/select2/css/select2.min.css') }}">
 
     <!-- OneUI framework -->
@@ -35,6 +37,22 @@
     <!-- You can include a specific file from css/themes/ folder to alter the default color theme of the template. eg: -->
     <!-- <link rel="stylesheet" id="css-theme" href="assets/css/themes/amethyst.min.css"> -->
     <!-- END Stylesheets -->
+    <style>
+        .form-control.is-invalid {
+            border-color: #DC2626 !important;
+        }
+        .col-relative {
+            position: relative;
+        }
+        .col-relative button {
+            position: absolute;
+            bottom: 5px;
+        }
+        .space {
+            display: inline-block;
+            width: 75px;
+        }
+    </style>
 </head>
 
 <body>
@@ -88,6 +106,27 @@
             </div>
         </div>
     </div>
+
+    <div class="modal fade" id="modal-invoice" tabindex="-1" role="dialog" aria-labelledby="modal-invoice" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="block block-rounded block-transparent mb-0">
+                <div class="block-header block-header-default">
+                    <h3 class="block-title"></h3>
+                    <div class="block-options">
+                        <button type="button" class="btn-block-option" data-bs-dismiss="modal" aria-label="Close">
+                        <i class="fa fa-fw fa-times"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="block-content fs-sm block-html"></div>
+                <div class="block-content block-content-full text-end bg-body">
+                    <button type="button" class="btn btn-sm btn-alt-secondary me-1" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
     <!-- END Modal -->
 
     <!--
@@ -116,6 +155,8 @@
     <script src="{{ asset('assets/js/plugins/datatables-buttons-pdfmake/vfs_fonts.js') }}"></script>
     <script src="{{ asset('assets/js/plugins/datatables-buttons/buttons.print.min.js') }}"></script>
     <script src="{{ asset('assets/js/plugins/datatables-buttons/buttons.html5.min.js') }}"></script>
+    <script src="{{ asset('assets/js/plugins/flatpickr/flatpickr.min.js') }}"></script>
+    <script src="{{ asset('assets/js/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js') }}"></script>
     <script src="{{ asset('assets/js/plugins/select2/js/select2.full.min.js') }}"></script>
 
     <!-- Page JS Code -->
@@ -126,6 +167,41 @@
         $(document).on('click', '#delete', function () {
             $('#modal-delete').modal('show');
             $('#modal-delete').find('form').attr('action', $(this).data('url'));
+        })
+        
+        $(document).on('click', '#invoice', function () {
+            $('#modal-invoice').modal('show');
+            $.ajax({
+                url: $(this).data('url'),
+                dataType: 'JSON',
+                success: function (resp) {
+                    console.log(resp.data);
+                    var table = '';
+                    $.each(resp.data, function (k, v) {
+                        table += `<tr>
+                                    <td>${v.CODE}</td>
+                                    <td>${v.NAME}</td>
+                                    <td align="center">${v.qty}</td>
+                                </tr>`
+                    })
+                    console.log(table);
+                    $('#modal-invoice').find('.block-title').text('Invoice');
+                    $('#modal-invoice').find('.block-html').html(
+                        `<p><span class="space">No. Invoice</span> : <b>${resp.data[0].invoice}</b></p>
+                        <p><span class="space">Tanggal</span> : <b>${resp.data[0].date}</b></p>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Kode</th>
+                                    <th>Nama Barang</th>
+                                    <th class="text-center">Qty</th>
+                                </tr>
+                            </thead>
+                            ${table}
+                        </table>`
+                    );
+                }
+            })
         })
 
         $(function(){
@@ -156,7 +232,7 @@
     </script>
 
     <!-- Page JS Helpers (Select2 plugins) -->
-    <script>One.helpersOnLoad(['jq-select2']);</script>
+    <script>One.helpersOnLoad(['js-flatpickr', 'jq-datepicker', 'jq-select2']);</script>
 
     @yield('scripts')
 </body>

@@ -17,12 +17,14 @@ class BasicmaterialImport implements ToModel, WithHeadingRow
     {
         return new BasicMaterial([
             'code' => $row['kode'] != null ? $row['kode'] : '-',
-            'name' => $row['nama_barang'] != null ? $row['nama_barang'] : '-'
+            'name' => $row['nama_barang'] != null ? $row['nama_barang'] : '-',
+            'price' => 0,
+            'qty' => 0
         ]);
     }
 
     public function headingRow(): int
     {
-        return 5;
+        return 1;
     }
 }

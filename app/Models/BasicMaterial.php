@@ -9,10 +9,5 @@ class BasicMaterial extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['code', 'name'];
-
-    public function detail()
-    {
-        return $this->hasOne(DetailBasicMaterial::class);
-    }
+    protected $fillable = ['code', 'name', 'qty', 'price'];
 }

@@ -21,6 +21,7 @@
 
     <!-- Page Content -->
     <div class="content">
+        @include('helper.alert')
         <!-- Overview -->
         <div class="row items-push">
             <div class="col-sm-6 col-xxl-3">

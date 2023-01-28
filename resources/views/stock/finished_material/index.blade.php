@@ -37,6 +37,8 @@
                             <th class="text-center">#</th>
                             <th>Kode</th>
                             <th>Nama Barang</th>
+                            <th>Qty</th>
+                            <th>Harga</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
@@ -68,12 +70,16 @@
                     },
                     { data: "code" },
                     { data: "name" },
+                    { data: "qty" },
+                    { data: "price" },
                     { data: "action", orderable: false}
                 ],
                 columnDefs: [
                     { width: "5%", "targets": [0] },
-                    { width: "20%", "targets": [1] },
-                    { className: "text-center", "targets": [0, 3] }
+                    { width: "15%", "targets": [1, 4] },
+                    { width: "10%", "targets": [3, 5] },
+                    { width: "30%", "targets": [2] },
+                    { className: "text-center", "targets": [0, 3, 5] }
                 ]
             });
         })

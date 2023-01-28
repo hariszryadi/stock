@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 Auth::routes();
@@ -23,5 +23,5 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::resource('basic_material','\App\Http\Controllers\BasicMaterialController');
 Route::resource('finished_material','\App\Http\Controllers\FinishedMaterialController');
-Route::resource('detail_basic_material','\App\Http\Controllers\DetailBasicMaterialController');
-Route::resource('detail_finished_material','\App\Http\Controllers\DetailFinishedMaterialController');
+Route::resource('basic_material_in','\App\Http\Controllers\BasicMaterialInController');
+Route::resource('finished_material_in','\App\Http\Controllers\FinishedMaterialInController');

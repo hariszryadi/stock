@@ -27,7 +27,7 @@
     <div class="content">
         <div class="block block-rounded">
             <div class="block-header block-header-default">
-                <a href="{{ route('basic_material.create') }}" class="btn btn-primary btn-sm" title="Tambah"><i class="fa fa-fw fa-plus"></i>&nbsp;Tambah</a>
+                <a href="{{ route('basic_material_in.create') }}" class="btn btn-primary btn-sm" title="Tambah"><i class="fa fa-fw fa-plus"></i>&nbsp;Tambah</a>
             </div>
             <div class="block-content block-content-full">
                 @include('helper.alert')
@@ -35,8 +35,8 @@
                     <thead>
                         <tr>
                             <th class="text-center">#</th>
-                            <th>Kode</th>
-                            <th>Nama Barang</th>
+                            <th>Invoice</th>
+                            <th>Tanggal</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
@@ -58,7 +58,7 @@
                 bLengthChange: true,
                 pageLength: 10,
                 ajax: {
-                    url: "{{ route('basic_material.index') }}",
+                    url: "{{ route('basic_material_in.index') }}",
                 },
                 columns: [
                     {
@@ -66,14 +66,13 @@
                             return meta.row + meta.settings._iDisplayStart + 1;
                         },
                     },
-                    { data: "code" },
-                    { data: "name" },
+                    { data: "invoice" },
+                    { data: "date" },
                     { data: "action", orderable: false}
                 ],
                 columnDefs: [
                     { width: "5%", "targets": [0] },
-                    { width: "20%", "targets": [1] },
-                    { className: "text-center", "targets": [0, 3] }
+                    { className: "text-center", "targets": [0, 1, 2, 3] }
                 ]
             });
         })

@@ -16,7 +16,7 @@ class BasicMaterialController extends Controller
     /**
      * Folder views
      */
-    protected $_view = 'master.basic_material.';
+    protected $_view = 'stock.basic_material.';
     
     /**
      * Route index
@@ -41,8 +41,11 @@ class BasicMaterialController extends Controller
     public function index()
     {
         if (request()->ajax()) {
-            return DataTables::of(BasicMaterial::orderBy('id')->get())
-                ->addColumn('action', function($data){
+            return DataTables::of(BasicMaterial::orderBy('id'))
+                ->editColumn('price', function($data) {
+                    return "Rp " . number_format($data->price,0,',',',');
+                })
+                ->addColumn('action', function($data) {
                     return '<a href="'.route('basic_material.edit', $data->id).'" class="btn btn-success btn-sm" title="Edit"><i class="fa fa-edit"></i></a>
                             <a href="javascript:void(0)" id="delete" data-id="'.$data->id.'" class="btn btn-danger btn-sm" title="Hapus" data-url="'.route('basic_material.destroy', $data->id).'"><i class="fa fa-trash"></i></a>';
                 })
@@ -71,12 +74,16 @@ class BasicMaterialController extends Controller
     {
         $this->validate($request, [
             'code' => 'required|unique:basic_materials|numeric|digits:11',
-            'name' => 'required|max:255'
+            'name' => 'required|max:255',
+            'qty' => 'required',
+            'price' => 'required'
         ]);
 
         BasicMaterial::create([
             'code' => $request->code,
-            'name' => $request->name
+            'name' => $request->name,
+            'qty' => $request->qty,
+            'price' => floatval(preg_replace('/[^\d.]/', '', $request->price))
         ]);
 
         return redirect()->route($this->_route)->with('success', 'Data berhasil ditambahkan');
@@ -116,13 +123,17 @@ class BasicMaterialController extends Controller
     {
         $this->validate($request, [
             'code' => 'required|unique:basic_materials,code,'.$id.'|numeric|digits:11',
-            'name' => 'required|max:255'
+            'name' => 'required|max:255',
+            'qty' => 'required',
+            'price' => 'required'
         ]);
 
         $data = BasicMaterial::find($id);
         $data->update([
             'code' => $request->code,
-            'name' => $request->name
+            'name' => $request->name,
+            'qty' => $request->qty,
+            'price' => floatval(preg_replace('/[^\d.]/', '', $request->price))
         ]);
 
         return redirect()->route($this->_route)->with('success', 'Data berhasil diubah');

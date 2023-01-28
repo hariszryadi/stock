@@ -6,7 +6,7 @@
             <span class="smini-visible">
                 <i class="fa fa-circle-notch text-primary"></i>
             </span>
-            <span class="smini-hide fs-5 tracking-wider">Stock</span>
+            <span class="smini-hide fs-5 tracking-wider">One<span class="fw-normal">UI</span></span>
         </a>
         <!-- END Logo -->
 
@@ -47,7 +47,7 @@
                     <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true"
                         aria-expanded="{{ request()->is('basic_material') || request()->is('basic_material/*') || request()->is('finished_material') || request()->is('finished_material/*') ? 'true' : 'false' }}" href="#">
                         <i class="nav-main-link-icon si si-grid"></i>
-                        <span class="nav-main-link-name">Master</span>
+                        <span class="nav-main-link-name">Stok</span>
                     </a>
                     <ul class="nav-main-submenu">
                         <li class="nav-main-item">
@@ -62,40 +62,40 @@
                         </li>
                     </ul>
                 </li>
-                <li class="nav-main-item {{ request()->is('detail_basic_material') || request()->is('detail_basic_material/*') || request()->is('detail_finished_material') || request()->is('detail_finished_material/*') ? 'open' : '' }}">
+                <li class="nav-main-item {{ request()->is('basic_material_in') || request()->is('basic_material_in/*') || request()->is('finished_material_in') || request()->is('finished_material_in/*') ? 'open' : '' }}">
                     <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true"
-                        aria-expanded="{{ request()->is('detail_basic_material') || request()->is('detail_basic_material/*') || request()->is('detail_finished_material') || request()->is('detail_finished_material/*') ? 'true' : 'false' }}" href="#">
+                        aria-expanded="{{ request()->is('basic_material_in') || request()->is('basic_material_in/*') || request()->is('finished_material_in') || request()->is('finished_material_in/*') ? 'true' : 'false' }}" href="#">
                         <i class="nav-main-link-icon si si-layers"></i>
-                        <span class="nav-main-link-name">Data</span>
+                        <span class="nav-main-link-name">Barang Masuk</span>
                     </a>
                     <ul class="nav-main-submenu">
                         <li class="nav-main-item">
-                            <a class="nav-main-link {{ request()->is('detail_basic_material') || request()->is('detail_basic_material/*') ? 'active' : '' }}" href="{{ route('detail_basic_material.index') }}">
-                                <span class="nav-main-link-name">Detail Bahan Dasar</span>
+                            <a class="nav-main-link {{ request()->is('basic_material_in') || request()->is('basic_material_in/*') ? 'active' : '' }}" href="{{ route('basic_material_in.index') }}">
+                                <span class="nav-main-link-name">Bahan Dasar</span>
                             </a>
                         </li>
                         <li class="nav-main-item">
-                            <a class="nav-main-link {{ request()->is('detail_finished_material') || request()->is('detail_finished_material/*') ? 'active' : '' }}" href="{{ route('detail_finished_material.index') }}">
-                                <span class="nav-main-link-name">Detail Bahan Jadi</span>
+                            <a class="nav-main-link {{ request()->is('finished_material_in') || request()->is('finished_material_in/*') ? 'active' : '' }}" href="{{ route('finished_material_in.index') }}">
+                                <span class="nav-main-link-name">Bahan Jadi</span>
                             </a>
                         </li>
                     </ul>
                 </li>
-                {{-- <li class="nav-main-item">
+                {{-- <li class="nav-main-item {{ request()->is('transaction_in') || request()->is('transaction_in/*') ? 'open' : '' }}">
                     <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true"
-                        aria-expanded="false" href="#">
-                        <i class="nav-main-link-icon si si-trophy"></i>
-                        <span class="nav-main-link-name">Widgets</span>
+                        aria-expanded="{{ request()->is('transaction_in') || request()->is('transaction_in/*') ? 'true' : 'false' }}" href="#">
+                        <i class="nav-main-link-icon si si-note"></i>
+                        <span class="nav-main-link-name">Transaksi</span>
                     </a>
                     <ul class="nav-main-submenu">
                         <li class="nav-main-item">
-                            <a class="nav-main-link" href="be_widgets_tiles.html">
-                                <span class="nav-main-link-name">Tiles</span>
+                            <a class="nav-main-link {{ request()->is('transaction_in') || request()->is('transaction_in/*') ? 'active' : '' }}" href="{{ route('transaction_in.index') }}">
+                                <span class="nav-main-link-name">Barang Masuk</span>
                             </a>
                         </li>
                         <li class="nav-main-item">
-                            <a class="nav-main-link" href="be_widgets_users.html">
-                                <span class="nav-main-link-name">Users</span>
+                            <a class="nav-main-link" href="#">
+                                <span class="nav-main-link-name">Barang Keluar</span>
                             </a>
                         </li>
                     </ul>

@@ -120,7 +120,7 @@
                             <div class="block block-rounded mb-0">
                                 <div class="block-content">
                                     <div class="p-sm-3 px-lg-4 px-xxl-5 py-lg-5">
-                                        <h1 class="h2 mb-1">Stock</h1>
+                                        <h1 class="h2 mb-1">OneUI</h1>
                                         <p class="fw-medium text-muted">
                                             Welcome, please login.
                                         </p>
@@ -174,7 +174,7 @@
                         </div>
                     </div>
                     <div class="fs-sm text-muted text-center">
-                        <strong>Stock</strong> &copy; <span data-toggle="year-copy"></span>
+                        <strong>OneUI 5.5</strong> &copy; <span data-toggle="year-copy"></span>
                     </div>
                 </div>
             </div>

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateFinishedMaterialsTable extends Migration
+class CreateTrBasicMaterialDetailsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,14 @@ class CreateFinishedMaterialsTable extends Migration
      */
     public function up()
     {
-        Schema::create('finished_materials', function (Blueprint $table) {
+        Schema::create('tr_basic_material_details', function (Blueprint $table) {
             $table->id();
-            $table->string('code');
-            $table->string('name');
+            $table->unsignedBigInteger('tr_basic_material_id');
+            $table->integer('basic_material_id');
             $table->integer('qty');
-            $table->float('price');
             $table->timestamps();
+
+            $table->foreign('tr_basic_material_id')->on('tr_basic_materials')->references('id')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 
@@ -30,6 +31,6 @@ class CreateFinishedMaterialsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('finished_materials');
+        Schema::dropIfExists('tr_basic_material_details');
     }
 }

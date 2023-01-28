@@ -16,7 +16,7 @@
                             <a class="link-fx" href="{{ route('home') }}">Dashboard</a>
                         </li>
                         <li class="breadcrumb-item">
-                            <a class="link-fx" href="{{ route('finished_material.index') }}">{{ $title }}</a>
+                            <a class="link-fx" href="{{ route('basic_material.index') }}">{{ $title }}</a>
                         </li>
                         <li class="breadcrumb-item" aria-current="page">
                             {{ isset($data) ? 'Edit' : 'Tambah' }} {{ $title }}
@@ -30,10 +30,10 @@
     <div class="content">
         <div class="block block-rounded">
             @isset($data)
-                <form action="{{ route('finished_material.update', $data->id) }}" method="POST">
+                <form action="{{ route('basic_material.update', $data->id) }}" method="POST">
                 @method('PUT')
             @else
-                <form action="{{ route('finished_material.store') }}" method="POST">
+                <form action="{{ route('basic_material.store') }}" method="POST">
             @endisset
                 @csrf
                 <div class="row justify-content-center py-sm-3 py-md-5">
@@ -49,6 +49,20 @@
                             <label class="form-label" for="name">Nama Barang <span class="text-danger">*</span></label>
                             <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" value="{{ isset($data) ? $data->name : old('name') }}" placeholder="Nama Barang">
                             @error('name')
+                                <div class="invalid-feedback animated fadeIn">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="mb-4">
+                            <label class="form-label" for="qty">Qty <span class="text-danger">*</span></label>
+                            <input type="number" class="form-control @error('qty') is-invalid @enderror" id="qty" name="qty" value="{{ isset($data) ? $data->qty : old('qty') }}" min="0">
+                            @error('qty')
+                                <div class="invalid-feedback animated fadeIn">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="mb-4">
+                            <label class="form-label" for="price">Harga <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control price-format @error('price') is-invalid @enderror" id="price" name="price" value="{{ isset($data) ? number_format($data->price,0,',',',') : old('price') }}">
+                            @error('price')
                                 <div class="invalid-feedback animated fadeIn">{{ $message }}</div>
                             @enderror
                         </div>

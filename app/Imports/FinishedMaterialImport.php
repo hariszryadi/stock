@@ -20,8 +20,10 @@ class FinishedMaterialImport implements ToModel, WithHeadingRow
     public function model(array $row)
     {
         return new FinishedMaterial([
-            'code' => $row['kode'],
-            'name' => $row['nama_barang']
+            'code' => $row['kode'] != null ? $row['kode'] : '-',
+            'name' => $row['nama_barang'] != null ? $row['nama_barang'] : '-',
+            'price' => 0,
+            'qty' => 0
         ]);
     }
 
