@@ -46,6 +46,9 @@ class BasicMaterialInController extends Controller
     {
         if (request()->ajax()) {
             return DataTables::of(TrBasicMaterial::where('status', 1)->orderBy('created_at', 'DESC'))
+                ->editColumn('date', function($data) {
+                    return date('d-m-Y', strtotime($data->date));
+                })
                 ->addColumn('action', function($data) {
                     return '<a href="javascript:void(0)" id="invoice" data-id="'.$data->id.'" class="btn btn-info btn-sm" title="Invoice" data-url="'.route('basic_material_in.show', $data->id).'"><i class="fa fa-file-invoice"></i></a>
                             <a href="'.route('basic_material_in.edit', $data->id).'" class="btn btn-success btn-sm" title="Edit"><i class="fa fa-edit"></i></a>
@@ -87,7 +90,7 @@ class BasicMaterialInController extends Controller
             $tbm = TrBasicMaterial::where('status', 1)->pluck('invoice')->last();
             $lastID = ltrim(substr($tbm, -3), '0');
             $saveTbm = TrBasicMaterial::create([
-                'invoice' => 'INV-' . date('Ymd', strtotime($request->date)) . sprintf('%03d', $lastID == null ? 1 : $lastID+1),
+                'invoice' => 'INV-B1-' . date('Ymd', strtotime($request->date)) . sprintf('%03d', $lastID == null ? 1 : $lastID+1),
                 'date' => date('Y-m-d', strtotime($request->date)),
                 'status' => 1
             ]);

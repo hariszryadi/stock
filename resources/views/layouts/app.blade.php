@@ -175,7 +175,16 @@
                 url: $(this).data('url'),
                 dataType: 'JSON',
                 success: function (resp) {
-                    console.log(resp.data);
+                    var url_print = '';
+                    var split = resp.data[0].invoice.split('-')[1];
+                    if (split == 'F1' || split == 'F0') {
+                        url_print = "{{ route('import_finished.print', ':id') }}";
+                    } else {
+                        url_print = "{{ route('import_basic.print', ':id') }}";
+                    }
+                    url_print = url_print.replace(':id', resp.data[0].id);
+                    var dateAr = resp.data[0].date.split('-');
+                    var newDate = dateAr[2] + '-' + dateAr[1] + '-' + dateAr[0];
                     var table = '';
                     $.each(resp.data, function (k, v) {
                         table += `<tr>
@@ -184,11 +193,13 @@
                                     <td align="center">${v.qty}</td>
                                 </tr>`
                     })
-                    console.log(table);
                     $('#modal-invoice').find('.block-title').text('Invoice');
                     $('#modal-invoice').find('.block-html').html(
-                        `<p><span class="space">No. Invoice</span> : <b>${resp.data[0].invoice}</b></p>
-                        <p><span class="space">Tanggal</span> : <b>${resp.data[0].date}</b></p>
+                        `<div class="float-end">
+                            <a href="${url_print}" class="btn btn-sm btn-danger">Print</a>
+                        </div>
+                        <p><span class="space">No. Invoice</span> : <b>${resp.data[0].invoice}</b></p>
+                        <p><span class="space">Tanggal</span> : <b>${newDate}</b></p>
                         <table class="table">
                             <thead>
                                 <tr>

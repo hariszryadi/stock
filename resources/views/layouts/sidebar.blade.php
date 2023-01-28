@@ -81,9 +81,9 @@
                         </li>
                     </ul>
                 </li>
-                <li class="nav-main-item {{ request()->is('basic_material_out') || request()->is('basic_material_out/*') ? 'open' : '' }}">
+                <li class="nav-main-item {{ request()->is('basic_material_out') || request()->is('basic_material_out/*') || request()->is('finished_material_out') || request()->is('finished_material_out/*') ? 'open' : '' }}">
                     <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true"
-                        aria-expanded="{{ request()->is('basic_material_out') || request()->is('basic_material_out/*') ? 'true' : 'false' }}" href="#">
+                        aria-expanded="{{ request()->is('basic_material_out') || request()->is('basic_material_out/*') || request()->is('finished_material_out') || request()->is('finished_material_out/*') ? 'true' : 'false' }}" href="#">
                         <i class="nav-main-link-icon fa fa-sign-out-alt"></i>
                         <span class="nav-main-link-name">Barang Keluar</span>
                     </a>
@@ -94,7 +94,7 @@
                             </a>
                         </li>
                         <li class="nav-main-item">
-                            <a class="nav-main-link" href="#">
+                            <a class="nav-main-link {{ request()->is('finished_material_out') || request()->is('finished_material_out/*') ? 'active' : '' }}" href="{{ route('finished_material_out.index') }}">
                                 <span class="nav-main-link-name">Bahan Jadi</span>
                             </a>
                         </li>
