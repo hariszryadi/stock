@@ -100,9 +100,9 @@
                         </li>
                     </ul>
                 </li>
-                <li class="nav-main-item">
+                <li class="nav-main-item {{ request()->is('user') || request()->is('user/*') ? 'open' : '' }}">
                     <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true"
-                        aria-expanded="false" href="#">
+                        aria-expanded="{{ request()->is('user') || request()->is('user/*') ? 'true' : 'false' }}" href="#">
                         <i class="nav-main-link-icon si si-user"></i>
                         <span class="nav-main-link-name">User Management</span>
                     </a>
@@ -113,7 +113,7 @@
                             </a>
                         </li>
                         <li class="nav-main-item">
-                            <a class="nav-main-link" href="#">
+                            <a class="nav-main-link {{ request()->is('user') || request()->is('user/*') ? 'active' : '' }}" href="{{ route('user.index') }}">
                                 <span class="nav-main-link-name">User</span>
                             </a>
                         </li>

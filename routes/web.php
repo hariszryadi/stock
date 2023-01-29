@@ -28,6 +28,7 @@ Route::resource('basic_material_in','\App\Http\Controllers\BasicMaterialInContro
 Route::resource('finished_material_in','\App\Http\Controllers\FinishedMaterialInController');
 Route::resource('basic_material_out','\App\Http\Controllers\BasicMaterialOutController');
 Route::resource('finished_material_out','\App\Http\Controllers\FinishedMaterialOutController');
+Route::resource('user', '\App\Http\Controllers\UserController');
 
 Route::get('/import_basic/print/{id}', 'App\Http\Controllers\ImportController@print_basic')->name('import_basic.print');
 Route::get('/import_finished/print/{id}', 'App\Http\Controllers\ImportController@print_finished')->name('import_finished.print');
