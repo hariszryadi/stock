@@ -43,8 +43,13 @@ class UserController extends Controller
         if (request()->ajax()) {
             return DataTables::of(User::orderBy('id'))
                 ->addColumn('action', function($data){
-                    return '<a href="'.route('user.edit', $data->id).'" class="btn btn-success btn-sm" title="Edit"><i class="fa fa-edit"></i></a>
-                            <a href="javascript:void(0)" id="delete" data-id="'.$data->id.'" class="btn btn-danger btn-sm" title="Hapus" data-url="'.route('user.destroy', $data->id).'"><i class="fa fa-trash"></i></a>';
+                    if ($data->id != 1) {
+                        return '<a href="'.route('user.edit', $data->id).'" class="btn btn-success btn-sm" title="Edit"><i class="fa fa-edit"></i></a>
+                                <a href="javascript:void(0)" id="delete" data-id="'.$data->id.'" class="btn btn-danger btn-sm" title="Hapus" data-url="'.route('user.destroy', $data->id).'"><i class="fa fa-trash"></i></a>';
+                    } else {
+                        return '<a href="'.route('user.edit', $data->id).'" class="btn btn-success btn-sm" title="Edit"><i class="fa fa-edit"></i></a>';
+                    }
+                    
                 })
                 ->make(true);
         }

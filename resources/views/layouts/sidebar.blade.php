@@ -39,7 +39,7 @@
             <ul class="nav-main">
                 <li class="nav-main-item">
                     <a class="nav-main-link {{ request()->is('home') ? 'active' : '' }}" href="{{ route('home') }}">
-                        <i class="nav-main-link-icon si si-speedometer"></i>
+                        <i class="nav-main-link-icon fa fa-dashboard"></i>
                         <span class="nav-main-link-name">Dashboard</span>
                     </a>
                 </li>
@@ -100,10 +100,29 @@
                         </li>
                     </ul>
                 </li>
+                <li class="nav-main-item {{ request()->is('recap_basic_material') || request()->is('recap_basic_material/*') ? 'open' : '' }}">
+                    <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true"
+                        aria-expanded="{{ request()->is('recap_basic_material') || request()->is('recap_basic_material/*') ? 'true' : 'false' }}" href="#">
+                        <i class="nav-main-link-icon fa fa-file-text"></i>
+                        <span class="nav-main-link-name">Rekapitulasi</span>
+                    </a>
+                    <ul class="nav-main-submenu">
+                        <li class="nav-main-item">
+                            <a class="nav-main-link {{ request()->is('recap_basic_material') || request()->is('recap_basic_material/*') ? 'active' : '' }}" href="{{ route('recap_basic_material.index') }}">
+                                <span class="nav-main-link-name">Bahan Dasar</span>
+                            </a>
+                        </li>
+                        <li class="nav-main-item">
+                            <a class="nav-main-link" href="#">
+                                <span class="nav-main-link-name">Bahan Jadi</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
                 <li class="nav-main-item {{ request()->is('user') || request()->is('user/*') ? 'open' : '' }}">
                     <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true"
                         aria-expanded="{{ request()->is('user') || request()->is('user/*') ? 'true' : 'false' }}" href="#">
-                        <i class="nav-main-link-icon si si-user"></i>
+                        <i class="nav-main-link-icon fa fa-user"></i>
                         <span class="nav-main-link-name">User Management</span>
                     </a>
                     <ul class="nav-main-submenu">
