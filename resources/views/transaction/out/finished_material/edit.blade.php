@@ -36,11 +36,24 @@
                 <div class="row justify-content-center py-sm-3 py-md-5">
                     <div class="col-sm-10 col-md-10">
                         <div class="mb-4">
-                            <label class="form-label" for="date">Tanggal <span class="text-danger">*</span></label>
-                            <input type="text" class="form-control" id="date" name="date" value="{{ date('d-m-Y', strtotime($tfm->date)) }}" placeholder="d-m-Y" data-date-format="d-m-Y" style="background-color: #eee; pointer-events: none;" readonly>
-                            @error('date')
-                                <div class="invalid-feedback animated fadeIn">{{ $message }}</div>
-                            @enderror
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label class="form-label" for="date">Tanggal <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" id="date" name="date" value="{{ date('d-m-Y', strtotime($tfm->date)) }}" placeholder="d-m-Y" data-date-format="d-m-Y" style="background-color: #eee; pointer-events: none;" readonly>
+                                    @error('date')
+                                        <div class="invalid-feedback animated fadeIn">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label" for="category">Kategori <span class="text-danger">*</span></label>
+                                    <select name="category" class="form-control" id="category" disabled>
+                                        <option value="" selected disabled>-- Pilih --</option>
+                                        <option value="3" {{ $tfm->category == '3' ? 'selected' : '' }}>Hasil Potong</option>
+                                        <option value="4" {{ $tfm->category == '4' ? 'selected' : '' }}>Penjualan</option>
+                                        <option value="5" {{ $tfm->category == '5' ? 'selected' : '' }}>Rusak</option>
+                                    </select>
+                                </div>
+                            </div>
                         </div>
                         <div class="mb-4">
                             @foreach ($tfm->detail as $key => $i)

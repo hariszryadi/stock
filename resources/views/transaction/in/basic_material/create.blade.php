@@ -34,11 +34,26 @@
                 <div class="row justify-content-center py-sm-3 py-md-5">
                     <div class="col-sm-10 col-md-10">
                         <div class="mb-4">
-                            <label class="form-label" for="date">Tanggal <span class="text-danger">*</span></label>
-                            <input type="text" class="js-flatpickr form-control @error('date') is-invalid @enderror" id="date" name="date" value="{{ old('date') }}" placeholder="d-m-Y" data-date-format="d-m-Y">
-                            @error('date')
-                                <div class="invalid-feedback animated fadeIn">{{ $message }}</div>
-                            @enderror
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label class="form-label" for="date">Tanggal <span class="text-danger">*</span></label>
+                                    <input type="text" class="js-flatpickr form-control @error('date') is-invalid @enderror" id="date" name="date" value="{{ old('date') }}" placeholder="d-m-Y" data-date-format="d-m-Y">
+                                    @error('date')
+                                        <div class="invalid-feedback animated fadeIn">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label" for="category">Kategori <span class="text-danger">*</span></label>
+                                    <select name="category" class="form-control js-select2 @error('category') is-invalid @enderror" id="category">
+                                        <option value="" selected disabled>-- Pilih --</option>
+                                        <option value="1">Pembelian</option>
+                                        <option value="2">Retur</option>
+                                    </select>
+                                    @error('category')
+                                        <div class="invalid-feedback animated fadeIn">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                            </div>
                         </div>
                         <div class="mb-4">
                             <div class="row row-block">

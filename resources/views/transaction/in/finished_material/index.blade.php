@@ -37,6 +37,7 @@
                             <th class="text-center">#</th>
                             <th>Invoice</th>
                             <th>Tanggal</th>
+                            <th>Kategori</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
@@ -68,11 +69,12 @@
                     },
                     { data: "invoice" },
                     { data: "date" },
+                    { data: "category" },
                     { data: "action", orderable: false}
                 ],
                 columnDefs: [
                     { width: "5%", "targets": [0] },
-                    { className: "text-center", "targets": [0, 1, 2, 3] }
+                    { className: "text-center", "targets": [0, 1, 2, 4] }
                 ]
             });
         })

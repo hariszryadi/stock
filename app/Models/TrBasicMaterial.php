@@ -9,7 +9,7 @@ class TrBasicMaterial extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['invoice', 'date', 'status'];
+    protected $fillable = ['invoice', 'date', 'status', 'category'];
 
     public function detail()
     {

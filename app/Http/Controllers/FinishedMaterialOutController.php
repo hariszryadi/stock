@@ -49,6 +49,17 @@ class FinishedMaterialOutController extends Controller
                 ->editColumn('date', function($data) {
                     return date('d-m-Y', strtotime($data->date));
                 })
+                ->editColumn('category', function($data) {
+                    if ($data->category == '3') {
+                        return 'Hasil Potong';
+                    } else if ($data->category == '4') {
+                        return 'Penjualan';
+                    } else if ($data->category == '5') {
+                        return 'Rusak';
+                    } else {
+                        return '-';
+                    }
+                })
                 ->addColumn('action', function($data) {
                     return '<a href="javascript:void(0)" id="invoice" data-id="'.$data->id.'" class="btn btn-info btn-sm" title="Invoice" data-url="'.route('finished_material_out.show', $data->id).'"><i class="fa fa-file-invoice"></i></a>
                             <a href="'.route('finished_material_out.edit', $data->id).'" class="btn btn-success btn-sm" title="Edit"><i class="fa fa-edit"></i></a>
@@ -81,7 +92,8 @@ class FinishedMaterialOutController extends Controller
         $this->validate($request, [
             'date' => 'required',
             'code.0'    => 'required',
-            'qty.0'  => 'required'
+            'qty.0'  => 'required',
+            'category' => 'required'
         ]);
 
         try {
@@ -92,7 +104,8 @@ class FinishedMaterialOutController extends Controller
             $saveTfm = TrFinishedMaterial::create([
                 'invoice' => 'INV-F0-' . date('Ymd', strtotime($request->date)) . sprintf('%03d', $lastID == null ? 1 : $lastID+1),
                 'date' => date('Y-m-d', strtotime($request->date)),
-                'status' => 0
+                'status' => 0,
+                'category' => $request->category
             ]);
             if ($saveTfm) {
                 $data = [];

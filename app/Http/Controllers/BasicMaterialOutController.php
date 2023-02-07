@@ -49,6 +49,15 @@ class BasicMaterialOutController extends Controller
                 ->editColumn('date', function($data) {
                     return date('d-m-Y', strtotime($data->date));
                 })
+                ->editColumn('category', function($data) {
+                    if ($data->category == '3') {
+                        return 'Penjualan';
+                    } else if ($data->category == '4') {
+                        return 'Rusak';
+                    } else {
+                        return '-';
+                    }
+                })
                 ->addColumn('action', function($data) {
                     return '<a href="javascript:void(0)" id="invoice" data-id="'.$data->id.'" class="btn btn-info btn-sm" title="Invoice" data-url="'.route('basic_material_out.show', $data->id).'"><i class="fa fa-file-invoice"></i></a>
                             <a href="'.route('basic_material_out.edit', $data->id).'" class="btn btn-success btn-sm" title="Edit"><i class="fa fa-edit"></i></a>
@@ -81,7 +90,8 @@ class BasicMaterialOutController extends Controller
         $this->validate($request, [
             'date' => 'required',
             'code.0'    => 'required',
-            'qty.0'  => 'required'
+            'qty.0'  => 'required',
+            'category' => 'required'
         ]);
 
         try {
@@ -92,7 +102,8 @@ class BasicMaterialOutController extends Controller
             $saveTbm = TrBasicMaterial::create([
                 'invoice' => 'INV-B0-' . date('Ymd', strtotime($request->date)) . sprintf('%03d', $lastID == null ? 1 : $lastID+1),
                 'date' => date('Y-m-d', strtotime($request->date)),
-                'status' => 0
+                'status' => 0,
+                'category' => $request->category
             ]);
             if ($saveTbm) {
                 $data = [];
