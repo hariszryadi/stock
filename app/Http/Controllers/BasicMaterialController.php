@@ -42,6 +42,9 @@ class BasicMaterialController extends Controller
     {
         if (request()->ajax()) {
             return DataTables::of(BasicMaterial::orderBy('id'))
+                ->editColumn('unit', function($data) {
+                    return ucfirst($data->unit);
+                })
                 ->editColumn('price', function($data) {
                     return "Rp " . number_format($data->price,0,',',',');
                 })
@@ -76,14 +79,16 @@ class BasicMaterialController extends Controller
             'code' => 'required|unique:basic_materials|numeric|digits:11',
             'name' => 'required|max:255',
             'qty' => 'required',
-            'price' => 'required'
+            'price' => 'required',
+            'unit' => 'required'
         ]);
 
         BasicMaterial::create([
             'code' => $request->code,
             'name' => $request->name,
             'qty' => $request->qty,
-            'price' => floatval(preg_replace('/[^\d.]/', '', $request->price))
+            'price' => floatval(preg_replace('/[^\d.]/', '', $request->price)),
+            'unit' => $request->unit
         ]);
 
         return redirect()->route($this->_route)->with('success', 'Data berhasil ditambahkan');
@@ -125,7 +130,8 @@ class BasicMaterialController extends Controller
             'code' => 'required|unique:basic_materials,code,'.$id.'|numeric|digits:11',
             'name' => 'required|max:255',
             'qty' => 'required',
-            'price' => 'required'
+            'price' => 'required',
+            'unit' => 'required'
         ]);
 
         $data = BasicMaterial::find($id);
@@ -133,7 +139,8 @@ class BasicMaterialController extends Controller
             'code' => $request->code,
             'name' => $request->name,
             'qty' => $request->qty,
-            'price' => floatval(preg_replace('/[^\d.]/', '', $request->price))
+            'price' => floatval(preg_replace('/[^\d.]/', '', $request->price)),
+            'unit' => $request->unit
         ]);
 
         return redirect()->route($this->_route)->with('success', 'Data berhasil diubah');

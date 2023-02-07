@@ -53,11 +53,33 @@
                             @enderror
                         </div>
                         <div class="mb-4">
-                            <label class="form-label" for="qty">Qty <span class="text-danger">*</span></label>
-                            <input type="number" class="form-control @error('qty') is-invalid @enderror" id="qty" name="qty" value="{{ isset($data) ? $data->qty : old('qty') }}" min="0">
-                            @error('qty')
-                                <div class="invalid-feedback animated fadeIn">{{ $message }}</div>
-                            @enderror
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label class="form-label" for="qty">Qty <span class="text-danger">*</span></label>
+                                    <input type="number" class="form-control @error('qty') is-invalid @enderror" id="qty" name="qty" value="{{ isset($data) ? $data->qty : old('qty') }}" min="0">
+                                    @error('qty')
+                                        <div class="invalid-feedback animated fadeIn">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label" for="unit">Satuan <span class="text-danger">*</span></label>
+                                    <select name="unit" class="form-control js-select2 @error('unit') is-invalid @enderror" id="unit">
+                                        <option value="" selected disabled>-- Pilih --</option>
+                                        @if (isset($data))
+                                            <option value="meter" {{ $data->unit == 'meter' ? 'selected' : '' }}>Meter</option>
+                                            <option value="yard" {{ $data->unit == 'yard' ? 'selected' : '' }}>Yard</option>
+                                            <option value="pcs" {{ $data->unit == 'pcs' ? 'selected' : '' }}>Pcs</option>
+                                        @else
+                                            <option value="meter" {{ old('unit') == 'meter' ? 'selected' : '' }}>Meter</option>
+                                            <option value="yard" {{ old('unit') == 'yard' ? 'selected' : '' }}>Yard</option>
+                                            <option value="pcs" {{ old('unit') == 'pcs' ? 'selected' : '' }}>Pcs</option>
+                                        @endif
+                                    </select>
+                                    @error('unit')
+                                        <div class="invalid-feedback animated fadeIn">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                            </div>
                         </div>
                         <div class="mb-4">
                             <label class="form-label" for="price">Harga <span class="text-danger">*</span></label>

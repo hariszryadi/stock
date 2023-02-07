@@ -9,5 +9,5 @@ class BasicMaterial extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['code', 'name', 'qty', 'price'];
+    protected $fillable = ['code', 'name', 'qty', 'price', 'unit'];
 }
