@@ -36,8 +36,8 @@
         <tbody>
             @foreach ($data as $item)
                 <tr>
-                    <td>{{ $item->CODE }}</td>
-                    <td>{{ $item->NAME }}</td>
+                    <td>{{ $item->code }}</td>
+                    <td>{{ $item->name }}</td>
                     <td align="center">{{ $item->qty }}</td>
                 </tr>
             @endforeach

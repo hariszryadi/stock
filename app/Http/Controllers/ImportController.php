@@ -20,8 +20,8 @@ class ImportController extends Controller
                                 a.invoice,
                                 a.date,
                                 a.status,
-                                c.CODE,
-                                c.NAME,
+                                c.code,
+                                c.name,
                                 b.qty 
                             FROM
                                 tr_basic_materials a
@@ -49,8 +49,8 @@ class ImportController extends Controller
                                 a.invoice,
                                 a.date,
                                 a.status,
-                                c.CODE,
-                                c.NAME,
+                                c.code,
+                                c.name,
                                 b.qty 
                             FROM
                                 tr_finished_materials a

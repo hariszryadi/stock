@@ -188,8 +188,8 @@
                     var table = '';
                     $.each(resp.data, function (k, v) {
                         table += `<tr>
-                                    <td>${v.CODE}</td>
-                                    <td>${v.NAME}</td>
+                                    <td>${v.code}</td>
+                                    <td>${v.name}</td>
                                     <td align="center">${v.qty}</td>
                                 </tr>`
                     })

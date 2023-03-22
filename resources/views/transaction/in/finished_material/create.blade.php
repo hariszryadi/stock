@@ -59,7 +59,7 @@
                         <div class="mb-4">
                             <div class="row row-block">
                                 <div class="col-sm-9">
-                                    <label class="form-label" for="code.0">Barang Dasar <span class="text-danger">*</span></label>
+                                    <label class="form-label" for="code.0">Barang Jadi <span class="text-danger">*</span></label>
                                     <select name="code[]" id="code.0" class="form-control js-select2 @error('code.0') is-invalid @enderror">
                                         <option value="" selected disabled>-- Pilih --</option>
                                         @foreach ($fm as $item)

@@ -61,7 +61,7 @@
                                     <input type="hidden" name="id_detail[]" value="{{ $i->id }}">
                                     <input type="hidden" name="code[]" value="{{ $i->basic_material_id }}">
                                     <div class="col-sm-9">
-                                        <label class="form-label" for="code.{{ $key }}">Barang Dasar <span class="text-danger">*</span></label>
+                                        <label class="form-label" for="code.{{ $key }}">Barang Jadi <span class="text-danger">*</span></label>
                                         <select name="code[]" id="code.{{ $key }}" class="form-control js-select2" disabled>
                                             <option value="" selected disabled>-- Pilih --</option>
                                             @foreach ($fm as $item)

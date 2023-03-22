@@ -9,7 +9,7 @@ class TrBasicMaterialDetail extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['tr_basic_material_id', 'basic_material_id', 'qty'];
+    protected $fillable = ['tr_basic_material_id', 'basic_material_id', 'qty', 'balance'];
 
     public function transaction()
     {

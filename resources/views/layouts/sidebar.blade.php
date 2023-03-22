@@ -100,9 +100,9 @@
                         </li>
                     </ul>
                 </li>
-                <li class="nav-main-item {{ request()->is('recap_basic_material') || request()->is('recap_basic_material/*') ? 'open' : '' }}">
+                <li class="nav-main-item {{ request()->is('recap_basic_material') || request()->is('recap_basic_material/*') || request()->is('recap_finished_material') || request()->is('recap_finished_material/*') ? 'open' : '' }}">
                     <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true"
-                        aria-expanded="{{ request()->is('recap_basic_material') || request()->is('recap_basic_material/*') ? 'true' : 'false' }}" href="#">
+                        aria-expanded="{{ request()->is('recap_basic_material') || request()->is('recap_basic_material/*') || request()->is('recap_finished_material') || request()->is('recap_finished_material/*') ? 'true' : 'false' }}" href="#">
                         <i class="nav-main-link-icon fa fa-file-text"></i>
                         <span class="nav-main-link-name">Rekapitulasi</span>
                     </a>
@@ -113,7 +113,7 @@
                             </a>
                         </li>
                         <li class="nav-main-item">
-                            <a class="nav-main-link" href="#">
+                            <a class="nav-main-link {{ request()->is('recap_finished_material') || request()->is('recap_finished_material/*') ? 'active' : '' }}" href="{{ route('recap_finished_material.index') }}">
                                 <span class="nav-main-link-name">Bahan Jadi</span>
                             </a>
                         </li>
