@@ -48,7 +48,6 @@
                                         <option value="" selected disabled>-- Pilih --</option>
                                         <option value="1">Pembelian</option>
                                         <option value="2">Retur</option>
-                                        <option value="3">Hasil Potong</option>
                                     </select>
                                     @error('category')
                                         <div class="invalid-feedback animated fadeIn">{{ $message }}</div>

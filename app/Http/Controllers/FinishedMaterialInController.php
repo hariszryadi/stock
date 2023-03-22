@@ -54,8 +54,6 @@ class FinishedMaterialInController extends Controller
                         return 'Pembelian';
                     } else if ($data->category == '2') {
                         return 'Retur';
-                    } else if ($data->category == '3') {
-                        return 'Hasil Potong';
                     } else {
                         return '-';
                     }

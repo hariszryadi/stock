@@ -50,9 +50,9 @@ class BasicMaterialOutController extends Controller
                     return date('d-m-Y', strtotime($data->date));
                 })
                 ->editColumn('category', function($data) {
-                    if ($data->category == '3') {
+                    if ($data->category == '4') {
                         return 'Penjualan';
-                    } else if ($data->category == '4') {
+                    } else if ($data->category == '5') {
                         return 'Rusak';
                     } else {
                         return '-';

@@ -48,9 +48,8 @@
                                     <label class="form-label" for="category">Kategori <span class="text-danger">*</span></label>
                                     <select name="category" class="form-control" id="category" disabled>
                                         <option value="" selected disabled>-- Pilih --</option>
-                                        <option value="3" {{ $tfm->category == '3' ? 'selected' : '' }}>Hasil Potong</option>
-                                        <option value="4" {{ $tfm->category == '4' ? 'selected' : '' }}>Penjualan</option>
-                                        <option value="5" {{ $tfm->category == '5' ? 'selected' : '' }}>Rusak</option>
+                                        <option value="3" {{ $tfm->category == '4' ? 'selected' : '' }}>Penjualan</option>
+                                        <option value="4" {{ $tfm->category == '5' ? 'selected' : '' }}>Rusak</option>
                                     </select>
                                 </div>
                             </div>

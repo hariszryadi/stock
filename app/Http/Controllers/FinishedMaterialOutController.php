@@ -51,10 +51,8 @@ class FinishedMaterialOutController extends Controller
                 })
                 ->editColumn('category', function($data) {
                     if ($data->category == '3') {
-                        return 'Hasil Potong';
-                    } else if ($data->category == '4') {
                         return 'Penjualan';
-                    } else if ($data->category == '5') {
+                    } else if ($data->category == '4') {
                         return 'Rusak';
                     } else {
                         return '-';

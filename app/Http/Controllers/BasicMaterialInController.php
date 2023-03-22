@@ -51,8 +51,10 @@ class BasicMaterialInController extends Controller
                 })
                 ->editColumn('category', function($data) {
                     if ($data->category == '1') {
-                        return 'Pembelian';
+                        return 'Hasil Potong';
                     } else if ($data->category == '2') {
+                        return 'Pembelian';
+                    } else if ($data->category == '3') {
                         return 'Retur';
                     } else {
                         return '-';

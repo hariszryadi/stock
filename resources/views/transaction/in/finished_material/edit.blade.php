@@ -46,7 +46,6 @@
                                         <option value="" selected disabled>-- Pilih --</option>
                                         <option value="1" {{ $tfm->category == '1' ? 'selected' : '' }}>Pembelian</option>
                                         <option value="2" {{ $tfm->category == '2' ? 'selected' : '' }}>Retur</option>
-                                        <option value="3" {{ $tfm->category == '3' ? 'selected' : '' }}>Hasil Potong</option>
                                     </select>
                                 </div>
                             </div>

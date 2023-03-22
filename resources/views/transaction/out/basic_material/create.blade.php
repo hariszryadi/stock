@@ -47,8 +47,8 @@
                                     <label class="form-label" for="category">Kategori <span class="text-danger">*</span></label>
                                     <select name="category" class="form-control js-select2 @error('category') is-invalid @enderror" id="category">
                                         <option value="" selected disabled>-- Pilih --</option>
-                                        <option value="3">Penjualan</option>
-                                        <option value="4">Rusak</option>
+                                        <option value="4">Penjualan</option>
+                                        <option value="5">Rusak</option>
                                     </select>
                                     @error('category')
                                         <div class="invalid-feedback animated fadeIn">{{ $message }}</div>
